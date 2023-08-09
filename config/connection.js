@@ -10,7 +10,7 @@ const connectDB = async () => {
     const mongoURI = `mongodb://${username}:${password}@localhost:27017/${dbName}?authSource=${dbName}`;
 
     await mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
-    console.log('Connected to MongoDB');
+    console.log(`Connected to MongoDB, DB:${dbName}`);
   } catch (error) {
     console.error('Error connecting to MongoDB:', error);
   }
