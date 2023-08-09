@@ -4,13 +4,17 @@ const router = require('express').Router();
  *  GET all users
  * 
  */
-router.get('/users', async (req, res) => {
-    try {
-      const users = await User.find().populate('thoughts').populate('friends');
-      res.json(users);
-    } catch (err) {
-      res.status(500).json(err);
-    }
+router.get('/users', (req, res) => {
+    User.find()
+      .populate('thoughts')
+      .populate('friends')
+      .exec((err, users) => {
+        if (err) {
+          res.status(500).json(err);
+        } else {
+          res.status(200).json(users);
+        }
+      });
   });
 
 /**
