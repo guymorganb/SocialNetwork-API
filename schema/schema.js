@@ -1,10 +1,12 @@
 /**
- * Schema for Users/Reactions/Friends
+ * Schema/models for Users/Reactions/Friends
  */
 
 // Import necessary modules and dependencies
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
+
+// in mongoose we make the schema and models in the same file
 
 // Define the User schema
 const userSchema = new Schema(

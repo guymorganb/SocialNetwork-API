@@ -6,7 +6,7 @@ const connectDB = async () => {
     const username = encodeURIComponent(process.env.MONGOADMIN);
     const password = encodeURIComponent(process.env.MONGOPASS);
     const dbName = 'test'; // Connects to lowercase 't'est database
-
+    // The options {useNewUrlParser: true, useUnifiedTopology: true} are provided to avoid deprecation warnings.
     const mongoURI = `mongodb://${username}:${password}@localhost:27017/${dbName}?authSource=${dbName}`;
 
     await mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
