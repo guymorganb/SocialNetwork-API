@@ -47,6 +47,45 @@ userSchema.virtual('friendCount').get(function () {
 });
 
 // Define the Thought schema
+// Define the Reaction schema
+const reactionSchema = new Schema(
+  {
+    reactionId: {
+      type: Schema.Types.ObjectId,
+      default: () => new mongoose.Types.ObjectId()
+    },
+    reactionBody: {
+      type: String,
+      required: true,
+      maxlength: 280
+    },
+    username: {
+      type: String,
+      required: true
+    },
+    createdAt: {
+      type: Date,
+      default: Date.now,
+      get: function (createdAt) {
+        const options = {
+          year: 'numeric',
+          month: 'long',
+          day: 'numeric',
+          hour: 'numeric',
+          minute: 'numeric',
+          hour12: true
+        };
+        return createdAt.toLocaleString('en-US', options);
+      }
+    }
+  },
+  {
+    toJSON: {
+      getters: true
+    },
+    id: false
+  }
+);
 const thoughtSchema = new Schema(
   {
     thoughtText: {
@@ -90,45 +129,6 @@ thoughtSchema.virtual('reactionCount').get(function () {
   return this.reactions.length;
 });
 
-// Define the Reaction schema
-const reactionSchema = new Schema(
-  {
-    reactionId: {
-      type: Schema.Types.ObjectId,
-      default: () => new mongoose.Types.ObjectId()
-    },
-    reactionBody: {
-      type: String,
-      required: true,
-      maxlength: 280
-    },
-    username: {
-      type: String,
-      required: true
-    },
-    createdAt: {
-      type: Date,
-      default: Date.now,
-      get: function (createdAt) {
-        const options = {
-          year: 'numeric',
-          month: 'long',
-          day: 'numeric',
-          hour: 'numeric',
-          minute: 'numeric',
-          hour12: true
-        };
-        return createdAt.toLocaleString('en-US', options);
-      }
-    }
-  },
-  {
-    toJSON: {
-      getters: true
-    },
-    id: false
-  }
-);
 
 // Create the User model
 const User = mongoose.model('User', userSchema);
