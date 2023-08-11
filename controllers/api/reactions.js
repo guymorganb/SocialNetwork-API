@@ -91,10 +91,4 @@ router.delete('/:reactionId', async (req, res) => {
   }
 });
 
-
-
-
-
-// Define other routes for reactions
-
 module.exports = router;
