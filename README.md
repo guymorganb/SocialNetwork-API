@@ -14,9 +14,9 @@
 
 > A simple API using MongoDB & Mongoose
 
-### 🏠 [Homepage](https://github.com/guymorganb/socialnetwork-api#readme)
+### 🏠 [Homepage](https://github.com/guymorganb/SocialNetwork-API)
 
-### ✨ [Demo](n/a)
+### 💫 [Demo] (https://drive.google.com/file/d/1-eBjXl1JrGjQ_rXr1G8QmDIhR2MRYBLn/view?usp=sharing)
 
 ## Usage
 
