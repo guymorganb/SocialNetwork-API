@@ -8,16 +8,25 @@ const router = require('express').Router();
  *  GET all users
  * endpoint /users
  */
-router.get('/', async (req, res) =>{
-  // import the model to work on
-  try{
-    const users = await User.find();
-    // Mongodb always returns a json object, dynamodb with amazon also returns json obj.
-    res.status(200).json(users)
-  }catch(err){
-    res.status(500).json({message: "error in user get route", Error: err})
+router.get('/', async (req, res) => {
+  try {
+    // Find all users from the User collection
+    // Populate the 'thoughts' field for each user, and within each thought, populate the 'reactions'
+    const users = await User.find().populate({
+      path: 'thoughts', // Specify the field 'thoughts' that we want to populate
+      populate: {
+        path: 'reactions' // Within each 'thought', populate the 'reactions' field
+      }
+    });
+
+    // Send the users, including their populated thoughts and reactions, as the response
+    res.status(200).json(users);
+  } catch (err) {
+    // If an error occurs, send a 500 status code and a JSON object containing the error message
+    res.status(500).json({ message: "error in user get route", Error: err });
   }
-})
+});
+
 /**
  *  GET user by email
  * endpoint /users:email

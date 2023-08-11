@@ -105,7 +105,7 @@ router.get('/:id', async (req, res) => {
 });
 /**
  * PUT request update by :id
- * endpoint thoughs/:id  
+ * endpoint api/thoughs/:id  
  */
 router.put('/:id', async (req, res) => {
   try {

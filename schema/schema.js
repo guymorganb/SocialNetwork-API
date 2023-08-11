@@ -136,5 +136,7 @@ const User = mongoose.model('User', userSchema);
 // Create the Thought model
 const Thought = mongoose.model('Thought', thoughtSchema);
 
+// Create the Reaction model
+const Reaction = mongoose.model('Reaction', reactionSchema)
 // Export the models
-module.exports = { User, Thought };
+module.exports = { User, Thought, Reaction };
